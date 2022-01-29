@@ -1,0 +1,13 @@
+{
+	"name": "tailwind-with-cli",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"start": "npx tailwindcss -i tailwind.css -o ./layouts/css/styles.css --watch",
+		"build": "npx tailwindcss -i tailwind.css -o ./layouts/css/styles.css --minify"
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"tailwindcss": "^3.0.18"
+	}
+}

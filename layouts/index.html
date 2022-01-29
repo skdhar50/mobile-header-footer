@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/styles.css" />
+		<script src="//unpkg.com/alpinejs" defer></script>
+		<title>Home</title>
+	</head>
+	<body class="antialiased h-screen flex flex-col justify-between">
+		<!-- Head Section -->
+		<div class="">
+			<!-- Small Screen Nav Section -->
+			<div class="" x-data="{lft_open: false, rgt_open: false}">
+				<!-- Left Nav Small -->
+				<div
+					:class="{'bg-black bg-opacity-50 absolute inset-0 z-30':lft_open===true, '':lft_open===false}"
+				>
+					<nav
+						class="absolute inset-0 opacity-0 transform duration-300 z-10 w-80 bg-gray-200 text-gray-800 h-screen p-3"
+						:class="{'translate-x-0 ease-in opacity-100':open===true, '-translate-x-full ease-out opacity-0':lft_open===false}"
+					>
+						<div
+							class="flex justify-between px-2 pt-2 border-b-[1px] pb-4 border-gray-500"
+						>
+							<span class="font-bold text-3xl">Sidebar</span>
+							<button
+								class="bg-gray-300 p-2 rounded-full focus:bg-gray-400 focus:outline-none"
+								@click="lft_open = false"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-6 w-6"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M15 19l-7-7 7-7"
+									/>
+								</svg>
+							</button>
+						</div>
+						<div class="mt-6">
+							<span
+								class="text-xl font-medium pl-2 border-b-[1px] block border-gray-500 pb-2"
+								>Categories</span
+							>
+							<ul class="text-lg mt-2">
+								<li x-data="{open_category: false}">
+									<div class="flex justify-between items-center px-4 py-2">
+										<span class="">Category name-1</span>
+										<button
+											class="block hover:bg-gray-400 bg-gray-300 bg-opacity-75 rounded-md"
+											:class="{'hidden':open_category===true, '':open_category===false}"
+											@click="open_category=true"
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												class="h-5 w-5"
+												viewBox="0 0 20 20"
+												fill="currentColor"
+											>
+												<path
+													fill-rule="evenodd"
+													d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+													clip-rule="evenodd"
+												/>
+											</svg>
+										</button>
+										<button
+											class="block hover:bg-gray-400 bg-gray-300 bg-opacity-75 rounded-md"
+											:class="{'hidden':open_category===false, '':open_category===true}"
+											@click="open_category=false"
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												class="h-5 w-5"
+												viewBox="0 0 20 20"
+												fill="currentColor"
+											>
+												<path
+													fill-rule="evenodd"
+													d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+													clip-rule="evenodd"
+												/>
+											</svg>
+										</button>
+									</div>
+
+									<ul
+										class="px-6 py-2 rounded"
+										:class="{'hidden':open_category===false, '':open_category===true}"
+									>
+										<li
+											class="block p-3 border-b-[1px] border-gray-500 bg-gray-300 bg-opacity-50 text-gray-800"
+											x-data="{sub_category: false}"
+										>
+											<div class="flex justify-between items-center">
+												<span class="">Sub Category - 1</span>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===true, '':sub_category===false}"
+													@click="sub_category=true"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===false, '':sub_category===true}"
+													@click="sub_category=false"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+											</div>
+											<ul
+												class="pt-2 rounded"
+												:class="{'hidden':sub_category===false, '':sub_category===true}"
+											>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 1
+												</li>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 2
+												</li>
+											</ul>
+										</li>
+										<li
+											class="block p-3 border-b-[1px] border-gray-500 bg-gray-300 bg-opacity-50 text-gray-800"
+											x-data="{sub_category: false}"
+										>
+											<div class="flex justify-between items-center">
+												<span class="">Sub Category - 1</span>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===true, '':sub_category===false}"
+													@click="sub_category=true"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===false, '':sub_category===true}"
+													@click="sub_category=false"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+											</div>
+											<ul
+												class="pt-2 rounded"
+												:class="{'hidden':sub_category===false, '':sub_category===true}"
+											>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 1
+												</li>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 2
+												</li>
+											</ul>
+										</li>
+										<li
+											class="block p-3 border-b-[1px] border-gray-500 bg-gray-300 bg-opacity-50 text-gray-800"
+											x-data="{sub_category: false}"
+										>
+											<div class="flex justify-between items-center">
+												<span class="">Sub Category - 1</span>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===true, '':sub_category===false}"
+													@click="sub_category=true"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===false, '':sub_category===true}"
+													@click="sub_category=false"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+											</div>
+											<ul
+												class="pt-2 rounded"
+												:class="{'hidden':sub_category===false, '':sub_category===true}"
+											>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 1
+												</li>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 2
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li x-data="{open_category: false}">
+									<div class="flex justify-between items-center px-4 py-2">
+										<span class="">Category name-1</span>
+										<button
+											class="block hover:bg-gray-400 bg-gray-300 bg-opacity-75 rounded-md"
+											:class="{'hidden':open_category===true, '':open_category===false}"
+											@click="open_category=true"
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												class="h-5 w-5"
+												viewBox="0 0 20 20"
+												fill="currentColor"
+											>
+												<path
+													fill-rule="evenodd"
+													d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+													clip-rule="evenodd"
+												/>
+											</svg>
+										</button>
+										<button
+											class="block hover:bg-gray-400 bg-gray-300 bg-opacity-75 rounded-md"
+											:class="{'hidden':open_category===false, '':open_category===true}"
+											@click="open_category=false"
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												class="h-5 w-5"
+												viewBox="0 0 20 20"
+												fill="currentColor"
+											>
+												<path
+													fill-rule="evenodd"
+													d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+													clip-rule="evenodd"
+												/>
+											</svg>
+										</button>
+									</div>
+
+									<ul
+										class="px-6 py-2 rounded"
+										:class="{'hidden':open_category===false, '':open_category===true}"
+									>
+										<li
+											class="block p-3 border-b-[1px] border-gray-500 bg-gray-300 bg-opacity-50 text-gray-800"
+											x-data="{sub_category: false}"
+										>
+											<div class="flex justify-between items-center">
+												<span class="">Sub Category - 1</span>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===true, '':sub_category===false}"
+													@click="sub_category=true"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===false, '':sub_category===true}"
+													@click="sub_category=false"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+											</div>
+											<ul
+												class="pt-2 rounded"
+												:class="{'hidden':sub_category===false, '':sub_category===true}"
+											>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 1
+												</li>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 2
+												</li>
+											</ul>
+										</li>
+										<li
+											class="block p-3 border-b-[1px] border-gray-500 bg-gray-300 bg-opacity-50 text-gray-800"
+											x-data="{sub_category: false}"
+										>
+											<div class="flex justify-between items-center">
+												<span class="">Sub Category - 1</span>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===true, '':sub_category===false}"
+													@click="sub_category=true"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===false, '':sub_category===true}"
+													@click="sub_category=false"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+											</div>
+											<ul
+												class="pt-2 rounded"
+												:class="{'hidden':sub_category===false, '':sub_category===true}"
+											>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 1
+												</li>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 2
+												</li>
+											</ul>
+										</li>
+										<li
+											class="block p-3 border-b-[1px] border-gray-500 bg-gray-300 bg-opacity-50 text-gray-800"
+											x-data="{sub_category: false}"
+										>
+											<div class="flex justify-between items-center">
+												<span class="">Sub Category - 1</span>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===true, '':sub_category===false}"
+													@click="sub_category=true"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===false, '':sub_category===true}"
+													@click="sub_category=false"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+											</div>
+											<ul
+												class="pt-2 rounded"
+												:class="{'hidden':sub_category===false, '':sub_category===true}"
+											>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 1
+												</li>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 2
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li x-data="{open_category: false}">
+									<div class="flex justify-between items-center px-4 py-2">
+										<span class="">Category name-1</span>
+										<button
+											class="block hover:bg-gray-400 bg-gray-300 bg-opacity-75 rounded-md"
+											:class="{'hidden':open_category===true, '':open_category===false}"
+											@click="open_category=true"
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												class="h-5 w-5"
+												viewBox="0 0 20 20"
+												fill="currentColor"
+											>
+												<path
+													fill-rule="evenodd"
+													d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+													clip-rule="evenodd"
+												/>
+											</svg>
+										</button>
+										<button
+											class="block hover:bg-gray-400 bg-gray-300 bg-opacity-75 rounded-md"
+											:class="{'hidden':open_category===false, '':open_category===true}"
+											@click="open_category=false"
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												class="h-5 w-5"
+												viewBox="0 0 20 20"
+												fill="currentColor"
+											>
+												<path
+													fill-rule="evenodd"
+													d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+													clip-rule="evenodd"
+												/>
+											</svg>
+										</button>
+									</div>
+
+									<ul
+										class="px-6 py-2 rounded"
+										:class="{'hidden':open_category===false, '':open_category===true}"
+									>
+										<li
+											class="block p-3 border-b-[1px] border-gray-500 bg-gray-300 bg-opacity-50 text-gray-800"
+											x-data="{sub_category: false}"
+										>
+											<div class="flex justify-between items-center">
+												<span class="">Sub Category - 1</span>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===true, '':sub_category===false}"
+													@click="sub_category=true"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===false, '':sub_category===true}"
+													@click="sub_category=false"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+											</div>
+											<ul
+												class="pt-2 rounded"
+												:class="{'hidden':sub_category===false, '':sub_category===true}"
+											>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 1
+												</li>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 2
+												</li>
+											</ul>
+										</li>
+										<li
+											class="block p-3 border-b-[1px] border-gray-500 bg-gray-300 bg-opacity-50 text-gray-800"
+											x-data="{sub_category: false}"
+										>
+											<div class="flex justify-between items-center">
+												<span class="">Sub Category - 1</span>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===true, '':sub_category===false}"
+													@click="sub_category=true"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===false, '':sub_category===true}"
+													@click="sub_category=false"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+											</div>
+											<ul
+												class="pt-2 rounded"
+												:class="{'hidden':sub_category===false, '':sub_category===true}"
+											>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 1
+												</li>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 2
+												</li>
+											</ul>
+										</li>
+										<li
+											class="block p-3 border-b-[1px] border-gray-500 bg-gray-300 bg-opacity-50 text-gray-800"
+											x-data="{sub_category: false}"
+										>
+											<div class="flex justify-between items-center">
+												<span class="">Sub Category - 1</span>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===true, '':sub_category===false}"
+													@click="sub_category=true"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+												<button
+													class="block hover:bg-gray-600 bg-gray-300 rounded-md"
+													:class="{'hidden':sub_category===false, '':sub_category===true}"
+													@click="sub_category=false"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-5 w-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</button>
+											</div>
+											<ul
+												class="pt-2 rounded"
+												:class="{'hidden':sub_category===false, '':sub_category===true}"
+											>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 1
+												</li>
+												<li
+													class="block p-3 border-b-[1px] border-gray-400 text-gray-800"
+												>
+													Sub Sub Category - 2
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+
+				<!-- Main Nav Small -->
+				<div class="relative z-0">
+					<header class="flex justify-between bg-gray-700">
+						<span class="flex">
+							<button
+								class="text-white p-4 rounded-xl focus:bg-gray-600 focus:outline-none"
+								@click="lft_open = true"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-8 w-8"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M4 6h16M4 12h16M4 18h16"
+									/>
+								</svg>
+							</button>
+							<span class="block text-2xl font-bold p-4 text-white"
+								>PUC Shop</span
+							>
+						</span>
+						<div class="text-white flex justify-between items-center">
+							<span
+								class="flex space-x-3 items-center border rounded-lg py-1 px-2 cursor-pointer"
+							>
+								<span class="">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-6 w-6"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+										/>
+									</svg>
+								</span>
+								<span
+									class="bg-gray-200 rounded-full px-2 font-semibold text-red-500"
+									>3</span
+								>
+							</span>
+							<button
+								class="text-white p-4 rounded-xl focus:bg-gray-600 focus:outline-none"
+								@click="rgt_open = true"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-8 w-8"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M4 6h16M4 12h16M4 18h16"
+									/>
+								</svg>
+							</button>
+						</div>
+					</header>
+				</div>
+
+				<!-- Right Nav Small -->
+				<div
+					:class="{'bg-black bg-opacity-50 absolute inset-0':rgt_open===true, '':rgt_open===false}"
+				>
+					<nav
+						class="absolute top-0 opacity-0 transition-all duration-300 z-10 w-80 bg-gray-200 text-gray-800 h-screen p-3"
+						:class="{'right-0 ease-in opacity-100':rgt_open===true, '-right-full ease-out opacity-0':rgt_open===false}"
+					>
+						<div
+							class="flex justify-between px-2 pt-2 border-b-[1px] pb-4 border-gray-500"
+						>
+							<button
+								class="bg-gray-300 p-2 rounded-full focus:bg-gray-400 focus:outline-none"
+								@click="rgt_open = false"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-6 w-6"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M9 5l7 7-7 7"
+									/>
+								</svg>
+							</button>
+							<span class="font-bold text-3xl">Sidebar</span>
+						</div>
+						<ul class="mt-8 pl-4">
+							<li class="flex justify-start items-center">
+								<span class="">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-6 w-6"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+										/>
+									</svg>
+								</span>
+								<a href="" class="block px-4 py-2 hover:bg-gray-700 rounded-md"
+									>Login / Register</a
+								>
+							</li>
+							<li class="flex justify-start items-center">
+								<span class="">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-6 w-6"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+										/>
+									</svg>
+								</span>
+								<a href="" class="block px-4 py-2 hover:bg-gray-700 rounded-md"
+									>Profile</a
+								>
+							</li>
+							<li class="flex justify-start items-center">
+								<span class="">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-6 w-6"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+										/>
+									</svg>
+								</span>
+								<a href="" class="block px-4 py-2 hover:bg-gray-700 rounded-md"
+									>Wishlist</a
+								>
+							</li>
+							<li class="flex justify-start items-center">
+								<span class="">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-6 w-6"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+										/>
+									</svg>
+								</span>
+								<a href="" class="block px-4 py-2 hover:bg-gray-700 rounded-md"
+									>My Cart</a
+								>
+							</li>
+							<li class="flex justify-start items-center">
+								<span>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-6 w-6"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+										/>
+									</svg>
+								</span>
+								<a href="" class="block px-4 py-2 hover:bg-gray-700 rounded-md"
+									>My Orders</a
+								>
+							</li>
+							<li class="flex justify-start items-center">
+								<span>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-6 w-6"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+										/>
+									</svg>
+								</span>
+								<a href="" class="block px-4 py-2 hover:bg-gray-700 rounded-md"
+									>Services</a
+								>
+							</li>
+							<li class="flex justify-start items-center">
+								<span>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-6 w-6"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+										/>
+									</svg>
+								</span>
+								<a href="" class="block px-4 py-2 hover:bg-gray-700 rounded-md"
+									>Help</a
+								>
+							</li>
+							<li class="flex justify-start items-center">
+								<span>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-6 w-6"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+										/>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+										/>
+									</svg>
+								</span>
+								<a href="" class="block px-4 py-2 hover:bg-gray-700 rounded-md"
+									>Location</a
+								>
+							</li>
+							<li class="flex justify-start items-center">
+								<span>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-6 w-6"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+										/>
+									</svg>
+								</span>
+								<a href="" class="block px-4 py-2 hover:bg-gray-700 rounded-md"
+									>Logout (as Sanjoy)</a
+								>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- Small Screen Nav Section End -->
+		</div>
+
+		<!-- Footer Section -->
+		<div class="bg-gray-700 h-fit mt-16 text-white px-4 md:px-8 pb-4">
+			<span class="flex justify-center p-4 text-xl">PUC Shop</span>
+			<div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+				<div class="space-y-4">
+					<div class="flex flex-col space-y-3">
+						<span class="font-medium border-b-[1px] pb-1 border-gray-500 text-sm md:text-base"
+							>Join Our Mailling Service</span
+						>
+						<div class="space-y-2">
+							<input
+								type="text"
+								name=""
+								placeholder="Enter your Email"
+								class="py-1 px-2 rounded-lg w-full placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-600"
+							/>
+							<button class="py-1 px-4 w-fit bg-indigo-600 rounded-md text-sm md:text-base">
+								Subscribe
+							</button>
+						</div>
+					</div>
+					<div class="space-y-3">
+						<span class="font-medium border-b-[1px] pb-1 border-gray-500"
+							>Follow Us On:</span
+						>
+						<div class="flex space-x-1 md:space-x-2">
+							<span class="">
+								<img
+									src="assets/facebook.svg"
+									alt=""
+									class="h-6 w-6 md:h-8 md:w-8"
+								/>
+							</span>
+							<span class="">
+								<img
+									src="assets/instagram.svg"
+									alt=""
+									class="h-6 w-6 md:h-8 md:w-8"
+								/>
+							</span>
+							<span class="">
+								<img
+									src="assets/youtube.svg"
+									alt=""
+									class="h-6 w-6 md:h-8 md:w-8"
+								/>
+							</span>
+							<span class="">
+								<img
+									src="assets/twitter.svg"
+									alt=""
+									class="h-6 w-6 md:h-8 md:w-8"
+								/>
+							</span>
+							<span class="">
+								<img
+									src="assets/gmail.svg"
+									alt=""
+									class="h-6 w-6 md:h-8 md:w-8"
+								/>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="space-y-3 md:pl-4">
+					<span class="font-medium border-b-[1px] pb-1 border-gray-500"
+						>Our Services</span
+					>
+					<div class="text-xs space-y-[2px] md:text-base md:space-y-0">
+						<p>Installment Service</p>
+						<p>After Sale Service</p>
+						<p>Total Protection Service</p>
+						<p>Extended Warranty Service</p>
+						<p>Our Discount Service</p>
+						<p>Gift Card Service</p>
+					</div>
+				</div>
+				<div class="space-y-3">
+					<span class="font-medium border-b-[1px] pb-1 border-gray-500"
+						>Customer Care</span
+					>
+					<div class="text-xs space-y-[2px] md:text-base md:space-y-0">
+						<p>Corporate Sales</p>
+						<p>FAQ</p>
+						<p>Shopping Guid & Publications</p>
+						<p>Showroom Locator</p>
+						<p>Warranty Policy</p>
+						<p>Return & Exchange</p>
+						<p>Contact Us</p>
+					</div>
+				</div>
+				<div class="space-y-3">
+					<span class="font-medium border-b-[1px] pb-1 border-gray-500"
+						>About PUCShop</span
+					>
+					<div class="text-xs space-y-[2px] md:text-base md:space-y-0">
+						<p>Who We Are?</p>
+						<p>Corporate Governance</p>
+						<p>Investors Relations & Report</p>
+						<p>Sustainability</p>
+						<p>News</p>
+						<p>Job Opportunities</p>
+					</div>
+				</div>
+				<!-- <div class="pl-2 space-y-4 text-sm md:text-lg md:space-y-0 md:flex md:space-x-4">
+					
+					
+				</div> -->
+			</div>
+			<div class="space-y-3 pl-2 pt-4">
+				<span class="font-medium border-b-[1px] pb-1 border-gray-500"
+					>Payment Method</span
+				>
+				<div class="flex space-x-2">
+					<div class="bg-white px-2 rounded">
+						<img src="assets/p1.png" alt="" class="h-8 w-8" />
+					</div>
+					<div class="bg-white px-2 rounded">
+						<img src="assets/p2.png" alt="" class="h-8 w-8" />
+					</div>
+					<div class="bg-white px-2 rounded">
+						<img src="assets/p3.png" alt="" class="h-8 w-8" />
+					</div>
+					<div class="bg-white px-2 rounded">
+						<img src="assets/p4.png" alt="" class="h-8 w-8" />
+					</div>
+					<div class="bg-white px-2 rounded">
+						<img src="assets/p5.png" alt="" class="h-8 w-8" />
+					</div>
+					<div class="bg-white px-2 rounded">
+						<img src="assets/p6.png" alt="" class="h-8 w-8" />
+					</div>
+					<div class="bg-white px-2 rounded">
+						<img src="assets/p7.png" alt="" class="h-8 w-8" />
+					</div>
+				</div>
+			</div>
+			<div class="pt-8 text-xs text-right">
+				<p class="">Privacey Policy | Terms of Services</p>
+				<p class="">Copyright &copy; 2022 PUCShop. All rights reserved.</p>
+			</div>
+		</div>
+		<!-- Footer Section End -->
+	</body>
+</html>
